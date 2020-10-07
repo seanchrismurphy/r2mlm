@@ -164,9 +164,11 @@ r2mlm_lmer <- function(model) {
     variance_tracker <- 0
 
     # add up the variance from each cluster
-    for (i in t) {
-      variance_tracker <- variance_tracker + i
-    }
+    # for (i in t) {
+    #   variance_tracker <- variance_tracker + i
+    # }
+
+    variance_tracker <- sum(unlist(t), na.rm = TRUE)
 
     # if the sum of variance is 0, then each cluster has 0 variance, so it's an L2 variable
     if (variance_tracker == 0) {
